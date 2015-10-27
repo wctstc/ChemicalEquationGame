@@ -2,11 +2,13 @@
 #include "UIBase.h"
 
 #include "Region.h"
+#include "ElementData.h"
 
 
 #include <conio.h>
 int main()
 {
+	ElementData eledata;
 	/*gotoxy( 10,10 );
 
 	for( int i = 0 ; i < 16; i++ )
@@ -53,5 +55,7 @@ int main()
 	{
 		printf( "%d\n", _getch() );
 	}
+
+
 	return 0;
 }

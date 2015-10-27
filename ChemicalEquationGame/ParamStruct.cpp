@@ -27,7 +27,8 @@ ParamStruct::ParamStruct(vector<string> variables)
 ParamStruct::ParamStruct( const ParamStruct &m_param )
 {
 	Value *value;
-	for( map<string, Value*>::iterator it_map = m_param.m_parame_map.begin(); it_map != m_param.m_parame_map.end(); it_map++ )
+	map<string, Value*>::const_iterator it_map = m_param.m_parame_map.begin();
+	for( ; it_map != m_param.m_parame_map.end(); it_map++ )
 	{
 		value = new Value();
 		value->m_type = it_map->second->m_type;
@@ -37,9 +38,9 @@ ParamStruct::ParamStruct( const ParamStruct &m_param )
 		}
 		else if( it_map->second->m_type == Value::PARAMSTRUCT )
 		{
-			value = new decltype( it_map->second->m_param )
+			//value = new decltype( it_map->second->m_param )
 		}
-		m_parame_map.insert( pair< string, Value* )
+		//m_parame_map.insert( pair< string, Value* )
 	}
 }
 
@@ -50,10 +51,10 @@ ParamStruct::~ParamStruct(void)
 	{
 		if( it_map->second != NULL )
 		{
-			if( it_map->second.m_param != NULL )
+			if( it_map->second->m_param != NULL )
 			{
-				delete it_map->second.m_param;
-				it_map->second.m_param = NULL;
+				delete it_map->second->m_param;
+				it_map->second->m_param = NULL;
 			}
 			delete it_map->second;
 			it_map->second = NULL;

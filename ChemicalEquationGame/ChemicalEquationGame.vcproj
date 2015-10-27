@@ -206,6 +206,14 @@
 					RelativePath=".\Config.h"
 					>
 				</File>
+				<File
+					RelativePath=".\FileIO.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\FileIO.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="DataStruct"
@@ -219,6 +227,26 @@
 					</File>
 					<File
 						RelativePath=".\ParamStruct.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Data"
+					>
+					<File
+						RelativePath=".\Data.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\Data.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Sturct"
+					>
+					<File
+						RelativePath=".\Struct.h"
 						>
 					</File>
 				</Filter>

@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <stdlib.h>
 #include "UIBase.h"
+#include "MainService.h"
 
 Region::Region(void)
 {
@@ -44,15 +45,14 @@ int Region::MainRegion()
 
 int Region::GameRegion()
 {
-	vector<vector<char*>> items;
 
 	//Êý¾Ý¼ÓÔØ
-	LoadData();
+	vector<char *> items = MainService::GetInstance()->Create( 100 );
 	for( int i = 0; i < 10; i++ )
 	{
 		for( int j = 0; j < 10; j++ )
 		{
-			print( 11+i*4, 4+j, "Aa" );
+			print( 11+i*4, 4+j, items[i*10+j] );
 		}
 	}
 
@@ -106,7 +106,8 @@ int Region::MessageLoopGame( )
 					{
 						readxy( m_point.m_x+i+1, m_point.m_y, c );
 						if( ( c >= 'a' && c <= 'z' ) || 
-							( c >= 'A' && c <= 'Z' ) )
+							( c >= 'A' && c <= 'Z' ) ||
+							( c >= '0' && c <= '9' ))
 						{
 							buffer[i] = c;
 							buffer[i+1] = '\0';
@@ -289,7 +290,14 @@ int Region::OnCancel()
 
 int Region::Judge()
 {
-	if( m_selectItem.size() > 5 )
+	vector< char * > items;
+	vector< string >::iterator it = m_selectItem.begin();
+
+	for( ; it != m_selectItem.end(); it++ )
+	{
+		items.push_back( (char*)it->c_str() );
+	}
+	if( MainService::GetInstance()->Check( items ) > 0 )
 	{
 		Match();
 		return 2;
